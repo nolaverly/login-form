@@ -1,15 +1,11 @@
 package com.task.loginform.web;
 
-import com.task.loginform.WebSecurityConfig;
 import com.task.loginform.model.Password;
 import com.task.loginform.model.User;
 import com.task.loginform.repository.UserRepository;
 import com.task.loginform.service.MyUserPrincipal;
 import com.task.loginform.service.SecurityService;
-import com.task.loginform.service.SecurityServiceImpl;
-import com.task.loginform.service.UserDetailsServiceImpl;
 import com.task.loginform.service.UserService;
-import com.task.loginform.service.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -95,38 +91,16 @@ public class UserController {
         User users = this.userRepository.getOne(user.getId());
 
         String msg = "";
-        // if (!(rs.hasErrors())) {
-        // if ((encoder.matches(password.getoldPassword(), users.getPassword()))) {
-        // return "updatePassword";
-        // } else {
-        // msg = "Password tidak sama ...";
-        // return "updatePassword";
-        // }
-        // }
-
-        // if (password.getnewPassword().equals(password.getconfirmNewPassword())) {
-        // users.setPassword(encoder.encode(password.getnewPassword()));
-        // userRepository.save(users);
-        // msg = "Password berhasil berubah";
-        // System.out.println("berhasil ubah password");
-        // // } else {
-        // // if (rs.hasErrors()) {
-        // // users.setPassword(encoder.encode(password.getnewPassword()));
-        // // msg = "konfirmasi password berbeda";
-        // // }
-        // } else {
-        // System.out.println("tidak berhasil");
-        // }
 
         if ((encoder.matches(password.getoldPassword(), users.getPassword()))
                 && (password.getnewPassword().equals(password.getconfirmNewPassword()))) {
             users.setPassword(encoder.encode(password.getnewPassword()));
             userRepository.save(users);
             msg = "Password berhasil diubah";
-            System.out.println("password berhasil diubah");
+            System.out.println("Password berhasil diubah");
         } else {
             msg = "Password lama tidak benar atau konfirmasi password berbeda";
-            System.out.println("tidak berhasil ubah password");
+            System.out.println("Tidak berhasil ubah password");
         }
 
         model.addAttribute("msg", msg);
