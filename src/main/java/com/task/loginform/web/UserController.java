@@ -1,15 +1,11 @@
 package com.task.loginform.web;
 
-import com.task.loginform.WebSecurityConfig;
 import com.task.loginform.model.Password;
 import com.task.loginform.model.User;
 import com.task.loginform.repository.UserRepository;
 import com.task.loginform.service.MyUserPrincipal;
 import com.task.loginform.service.SecurityService;
-import com.task.loginform.service.SecurityServiceImpl;
-import com.task.loginform.service.UserDetailsServiceImpl;
 import com.task.loginform.service.UserService;
-import com.task.loginform.service.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,26 +1,26 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+.login-page {
+  padding-top: 5rem;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 153, 255, 0.165)), to(#8000ff));
+  background-image: linear-gradient(to left, rgba(0, 153, 255, 0.165), #8000ff);
 }
 
-.form-signin {
-  max-width: 330px;
+.login-page h2 {
+  color: #8000ff;
+  margin-bottom: 20px;
+}
+
+.login-page .form-signin {
   padding: 15px;
   margin: 0 auto;
 }
 
-.form-signin .checkbox {
-  font-weight: normal;
-}
-
-.form-signin input {
+.login-page .form-signin input {
   margin-top: 10px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin .form-control {
+.login-page .form-signin .form-control {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
@@ -29,17 +29,87 @@ body {
   font-size: 16px;
 }
 
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
+.login-page .container {
+  background-color: white;
+  max-width: 30rem;
 }
 
-.form-signin .form-control:focus {
-  z-index: 2;
+.registration-page {
+  padding-top: 5rem;
+  background-color: rgba(0, 153, 255, 0.165);
 }
 
-.form-signin button {
+.registration-page h2 {
+  color: #8000ff;
+  margin-bottom: 20px;
+}
+
+.registration-page .form-signin {
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.registration-page .form-signin input {
   margin-top: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.registration-page .form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.registration-page .container {
+  max-width: 50rem;
+}
+
+.welcome-page {
+  padding-top: 5rem;
+  background-color: rgba(0, 153, 255, 0.165);
+}
+
+.welcome-page h2 {
+  color: #8000ff;
+  margin-bottom: 20px;
+}
+
+.update-password {
+  padding-top: 5rem;
+  background-color: rgba(0, 153, 255, 0.165);
+}
+
+.update-password h2 {
+  color: #8000ff;
+  margin-bottom: 20px;
+}
+
+.update-password .form-signin {
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.update-password .form-signin input {
+  margin-top: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.update-password .form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.update-password .container {
+  max-width: 50rem;
 }
 
 .has-error {
