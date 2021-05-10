@@ -104,18 +104,29 @@ public class UserController {
         // }
         // }
 
-        if (password.getnewPassword().equals(password.getconfirmNewPassword())) {
+        // if (password.getnewPassword().equals(password.getconfirmNewPassword())) {
+        // users.setPassword(encoder.encode(password.getnewPassword()));
+        // userRepository.save(users);
+        // msg = "Password berhasil berubah";
+        // System.out.println("berhasil ubah password");
+        // // } else {
+        // // if (rs.hasErrors()) {
+        // // users.setPassword(encoder.encode(password.getnewPassword()));
+        // // msg = "konfirmasi password berbeda";
+        // // }
+        // } else {
+        // System.out.println("tidak berhasil");
+        // }
+
+        if ((encoder.matches(password.getoldPassword(), users.getPassword()))
+                && (password.getnewPassword().equals(password.getconfirmNewPassword()))) {
             users.setPassword(encoder.encode(password.getnewPassword()));
             userRepository.save(users);
-            msg = "Password berhasil berubah";
-            System.out.println("berhasil ubah password");
-            // } else {
-            // if (rs.hasErrors()) {
-            // users.setPassword(encoder.encode(password.getnewPassword()));
-            // msg = "konfirmasi password berbeda";
-            // }
+            msg = "Password berhasil diubah";
+            System.out.println("password berhasil diubah");
         } else {
-            System.out.println("tidak berhasil");
+            msg = "Password lama tidak benar atau konfirmasi password berbeda";
+            System.out.println("tidak berhasil ubah password");
         }
 
         model.addAttribute("msg", msg);
