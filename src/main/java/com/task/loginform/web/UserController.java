@@ -1,11 +1,15 @@
 package com.task.loginform.web;
 
+import com.task.loginform.WebSecurityConfig;
 import com.task.loginform.model.Password;
 import com.task.loginform.model.User;
 import com.task.loginform.repository.UserRepository;
 import com.task.loginform.service.SecurityService;
 import com.task.loginform.service.SecurityServiceImpl;
+import com.task.loginform.service.UserDetailsServiceImpl;
 import com.task.loginform.service.UserService;
+import com.task.loginform.service.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -85,7 +89,7 @@ public class UserController {
 
     @PostMapping("/simpanPassword")
     public String simpanPassword(Model model, @Validated Password password, BindingResult rs) {
-        SecurityServiceImpl user = (SecurityServiceImpl) SecurityContextHolder.getContext().getAuthentication()
+        WebSecurityConfig user = (WebSecurityConfig) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User users = this.userRepository.getOne(user.getId());
@@ -104,11 +108,14 @@ public class UserController {
         // users.setPassword(encoder.encode(password.getnewPassword()));
         // userRepository.save(users);
         // msg = "Password berhasil berubah";
+        // System.out.println("berhasil ubah password");
         // // } else {
         // // if (rs.hasErrors()) {
         // // users.setPassword(encoder.encode(password.getnewPassword()));
         // // msg = "konfirmasi password berbeda";
         // // }
+        // } else {
+        // System.out.println("tidak berhasil");
         // }
 
         model.addAttribute("msg", msg);
