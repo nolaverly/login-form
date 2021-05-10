@@ -1,48 +1,73 @@
-$pad: 40px;
+$theme-color: rgb(128, 0, 255);
+$secondary-theme-color: rgba(0, 153, 255, 0.165);
 
-body {
-  padding-top: $pad;
-  padding-bottom: 40px;
-  background-color: #eee;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-
-  .checkbox {
-    font-weight: normal;
-  }
-
-  input {
-    margin-top: 10px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
+@mixin body {
+  padding-top: 5rem;
+  h2 {
+    color: $theme-color;
+    margin-bottom: 20px;
   }
 }
 
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
+@mixin form {
+  .form-signin {
+    padding: 15px;
+    margin: 0 auto;
+
+    input {
+      margin-top: 10px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
 }
 
-.form-signin .form-control:focus {
-  z-index: 2;
+.login-page {
+  @include body;
+  @include form;
+  background-image: linear-gradient(
+    to left,
+    $secondary-theme-color,
+    $theme-color
+  );
+
+  .container {
+    background-color: white;
+    max-width: 30rem;
+  }
 }
 
-.form-signin button {
-  margin-top: 10px;
+.registration-page {
+  @include body;
+  @include form;
+  background-color: $secondary-theme-color;
+  .container {
+    max-width: 50rem;
+  }
+}
+
+.welcome-page {
+  @include body;
+  background-color: $secondary-theme-color;
+}
+
+.update-password {
+  @include body;
+  @include form;
+  background-color: $secondary-theme-color;
+  .container {
+    max-width: 50rem;
+  }
 }
 
 .has-error {
