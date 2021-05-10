@@ -74,12 +74,12 @@ public class UserController {
     }
 
     @GetMapping({ "/", "/welcome" })
-    public String welcome(Model model) {
+    public String welcome() {
         return "welcome";
     }
 
     @GetMapping("/updatePassword")
-    public String updatePasswordpage(Model model, Password password) {
+    public String updatePasswordpage(Password password) {
 
         return "updatePassword";
     }
