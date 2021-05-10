@@ -4,6 +4,7 @@ import com.task.loginform.WebSecurityConfig;
 import com.task.loginform.model.Password;
 import com.task.loginform.model.User;
 import com.task.loginform.repository.UserRepository;
+import com.task.loginform.service.MyUserPrincipal;
 import com.task.loginform.service.SecurityService;
 import com.task.loginform.service.SecurityServiceImpl;
 import com.task.loginform.service.UserDetailsServiceImpl;
@@ -89,8 +90,7 @@ public class UserController {
 
     @PostMapping("/simpanPassword")
     public String simpanPassword(Model model, @Validated Password password, BindingResult rs) {
-        WebSecurityConfig user = (WebSecurityConfig) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
+        MyUserPrincipal user = (MyUserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User users = this.userRepository.getOne(user.getId());
 
@@ -104,19 +104,19 @@ public class UserController {
         // }
         // }
 
-        // if (password.getnewPassword().equals(password.getconfirmNewPassword())) {
-        // users.setPassword(encoder.encode(password.getnewPassword()));
-        // userRepository.save(users);
-        // msg = "Password berhasil berubah";
-        // System.out.println("berhasil ubah password");
-        // // } else {
-        // // if (rs.hasErrors()) {
-        // // users.setPassword(encoder.encode(password.getnewPassword()));
-        // // msg = "konfirmasi password berbeda";
-        // // }
-        // } else {
-        // System.out.println("tidak berhasil");
-        // }
+        if (password.getnewPassword().equals(password.getconfirmNewPassword())) {
+            users.setPassword(encoder.encode(password.getnewPassword()));
+            userRepository.save(users);
+            msg = "Password berhasil berubah";
+            System.out.println("berhasil ubah password");
+            // } else {
+            // if (rs.hasErrors()) {
+            // users.setPassword(encoder.encode(password.getnewPassword()));
+            // msg = "konfirmasi password berbeda";
+            // }
+        } else {
+            System.out.println("tidak berhasil");
+        }
 
         model.addAttribute("msg", msg);
         return "updatePassword";
